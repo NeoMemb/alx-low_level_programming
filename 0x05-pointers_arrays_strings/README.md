@@ -1,0 +1,1 @@
+array & pointer in c
