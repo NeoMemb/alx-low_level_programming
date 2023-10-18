@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * puts_half - print the second half of a str
  * @str: char type parameter
@@ -21,9 +22,9 @@ void puts_half(char *str)
 	{
 		if (a > b)
 		{
-			_putchar(str[a]);
+			putchar(str[a]);
 		}
 		a++;
 	}
-	_putchar('\n');
+	putchar('\n');
 }
