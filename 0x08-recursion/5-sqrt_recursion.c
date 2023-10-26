@@ -10,32 +10,30 @@
  * equal to tge square of @n(the square root we are
  * looking for), it return @mid.
  *
- * Return: int mid or recursionly mid 
+ * Return: int mid or recursionly mid
  */
-
 int sqrt_recursion(int n, int low, int high)
 {
-    if (low <= high)
-    {
-        int mid = low + (high - low) / 2;
-        int square = mid * mid;
+	if (low <= high)
+	{
+		int mid = low + (high - low) / 2;
+		int square = mid * mid;
 
-        if (square == n)
-	{
-            return mid;
-        }
-	else if (square < n)
-	{
-            return sqrt_recursion(n, mid + 1, high);
-        }
-	else
-	{
-            return sqrt_recursion(n, low, mid - 1);
-        }
-    }
-    return -1;
+		if (square == n)
+		{
+			return (mid);
+		}
+		else if (square < n)
+		{
+			return (sqrt_recursion(n, mid + 1, high));
+		}
+		else
+		{
+			return (sqrt_recursion(n, low, mid - 1));
+		}
+	}
+	return (-1);
 }
-
 /**
  * _sqrt_recursion - returns square root
  * @n: data ype int
@@ -46,5 +44,5 @@ int sqrt_recursion(int n, int low, int high)
  */
 int _sqrt_recursion(int n)
 {
-    return sqrt_recursion(n, 1, n);
+	return (sqrt_recursion(n, 1, n));
 }
