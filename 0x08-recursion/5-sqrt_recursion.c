@@ -1,38 +1,25 @@
 #include "main.h"
 /**
  * sqrt_recursion - helper fuction
- * @n: int data type
- * @low: int data type
- * @high: int data type
- * Description: This helper function takes in three
- * arguement. if @low is less or equal to @high
- * , @mid var is created and if the square of mid is
- * equal to tge square of @n(the square root we are
- * looking for), it return @mid.
+ * @i: int data type
+ * @j: int data type
+ * Description: This helper function takes in two
+ * arguement. If i * i = j, return j. if i * i
+ * > j, returns -1.
  *
- * Return: int mid or recursionly mid
+ * Return: int i
  */
-int sqrt_recursion(int n, int low, int high)
+int sqrt_recursion(int i, int j)
 {
-	if (low <= high)
+	if (i * i == j)
 	{
-		int mid = low + (high - low) / 2;
-		int square = mid * mid;
-
-		if (square == n)
-		{
-			return (mid);
-		}
-		else if (square < n)
-		{
-			return (sqrt_recursion(n, mid + 1, high));
-		}
-		else
-		{
-			return (sqrt_recursion(n, low, mid - 1));
-		}
+		return (i);
 	}
-	return (-1);
+	else if (i * i > j)
+	{
+		return (-1);
+	}
+	return (sqrt_recursion(i + 1, j));
 }
 /**
  * _sqrt_recursion - returns square root
@@ -44,5 +31,5 @@ int sqrt_recursion(int n, int low, int high)
  */
 int _sqrt_recursion(int n)
 {
-	return (sqrt_recursion(n, 1, n));
+	return (sqrt_recursion(1, n));
 }
