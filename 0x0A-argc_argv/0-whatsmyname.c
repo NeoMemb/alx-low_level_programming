@@ -4,9 +4,9 @@
  * @argc: arg count
  * @argv: arg vector
  * Description: The function prints
- * the 
+ * the arg passed to the command line
  *
- *
+ * Return: Always (0) Success
  */
 int main(int argc, char **argv)
 {
