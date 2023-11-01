@@ -12,7 +12,7 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	unsigned int i, j, tot_length;
+	unsigned int i, j, tot_length, x, y;
 	char *output;
 
 	if (s1 == NULL)
@@ -31,13 +31,19 @@ char *str_concat(char *s1, char *s2)
 	}
 	tot_length = i + j;
 	output = (void *)malloc(tot_length + 1);
-	strncpy(output, s1, i);
-	strncpy(output + i, s2, j);
+	for (x = 0; x < i; x++)
+	{
+		output[x] = s1[x];
+	}
+	for (y = 0; y < j; y++, x++)
+	{
+		output[x] = s2[y];
+	}
+	output[tot_length] = s2[y];
 	if (output == NULL)
 	{
 		return (NULL);
 	}
-	output[tot_length] = '\0';
 
 	return (output);
 }

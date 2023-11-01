@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- **********/
+ * alloc_grid - is a double pointer funct
+ * @width: int type
+ * @height: int type
+ * Description: width arg is size of the array
+ * in 2D and height is the individual array
+ * in the 2D array.
+ *
+ * Return: int double pointer
+ */
 int **alloc_grid(int width, int height)
 {
-	int **ptr1, i, j; 
+	int **ptr1, i, j;
 
-	if (width<= 0)
+	if (width <= 0)
 	{
 		return (NULL);
 	}
@@ -14,7 +22,7 @@ int **alloc_grid(int width, int height)
 	{
 		return (NULL);
 	}
-	ptr1 = (int**)malloc(sizeof(int*) * height);
+	ptr1 = (int **)malloc(sizeof(int *) * height);
 	for (i = 0; i < height; i++)
 	{
 		ptr1[i] = (int *)malloc(sizeof(int) * width);
