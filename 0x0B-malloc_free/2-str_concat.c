@@ -30,7 +30,7 @@ char *str_concat(char *s1, char *s2)
 	{
 	}
 	tot_length = i + j;
-	output = (void *)malloc(tot_length + 1);
+	output = malloc(tot_length + 1);
 	for (x = 0; x < i; x++)
 	{
 		output[x] = s1[x];
