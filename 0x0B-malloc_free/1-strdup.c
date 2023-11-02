@@ -18,12 +18,17 @@ char *_strdup(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 	}
-	s1 = (void *)malloc(sizeof(char) * i);
+	i++;
+	s1 = malloc(sizeof(char) * i);
 	if (s1 == NULL)
 	{
 		printf(" ");
 	}
 	strcpy(s1, str);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
 
 	return (s1);
 }
