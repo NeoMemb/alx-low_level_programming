@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 /**
  * string_nconcat - catenate two strings
  * @s1: char type of first string
@@ -13,39 +14,29 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, j;
 	char *ptr;
 	unsigned int a, b;
 
-	if (s1 == NULL)
+	a = (s1 != NULL) ? strlen(s1) : 0;
+	b = (s2 != NULL) ? strlen(s2) : 0;
+
+	if (n >= b)
 	{
-		s1 = "";
+		n = b;
 	}
-	if (s2 == NULL)
-	{
-		s2 = "";
-	}
-	if (n == 0)
+	ptr = malloc( a + n + 1);
+	if (ptr == NULL)
 	{
 		return (NULL);
 	}
-	/*Length of two strings; s1 and s2 = i and j*/
-	for (i = 0; s1[i] != '\0'; i++)
+	if (s1 != NULL)
 	{
+		strcpy(ptr, s1);
 	}
-	for (j = 0; s2[j] != '\0'; j++)
+	else
 	{
+		ptr[0] = '\0';
 	}
-	ptr = malloc(i + j + 1);
-	for (a = 0; s1[a] != '\0'; a++)
-	{
-		ptr[a] = s1[a];
-	}
-	for (b = 0; b < n; b++, a++)
-	{
-		ptr[a] = s2[b];
-	}
-	ptr[a] = '\0';
-
+	strncat(ptr, s2, n);
 	return (ptr);
 }
