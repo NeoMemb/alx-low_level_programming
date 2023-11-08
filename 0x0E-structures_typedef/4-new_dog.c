@@ -2,7 +2,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- ********/
+ * new_dog - creating a new dog
+ * @name: pointer to char data type
+ * @age: float data type
+ * @owner: pointer to char data type
+ * Description: This function creates the name of a dog profile,
+ * with name as dog's name, age as dog's age, owner as the name of the owner.
+ *
+ * Return: dog_t
+ */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	struct dog *smart;
