@@ -1,11 +1,11 @@
 #include "lists.h"
 /**
- * add_node - add a new node before
- * @head: pointer to the address of the preceeding node
+ * add_node_end - add a new node to the end
+ * @head: pointer to the address of the succeeding node
  * @str: pointer to list of string to be stored in a node
  * Return: node
  */
-list_t *add_node(list_t **head, const char *str)
+list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *node;
 	unsigned int count;
@@ -25,8 +25,19 @@ list_t *add_node(list_t **head, const char *str)
 		return (NULL);
 	}
 	node->len = count;
-	node->next = *head;
-	*head = node;
+	if (*head == NULL)
+	{
+		*head = node;
+	}
+	else
+	{
+		list_t *head1 = *head;
 
+		while (head1->next != NULL)
+		{
+			head1 = head1->next;
+		}
+		head1->next = node;
+	}
 	return (node);
 }
