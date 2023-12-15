@@ -33,6 +33,10 @@ char *str_concat(char *s1, char *s2)
 	}
 	tot_length = s1_len + s2_len + 1;
 	output = malloc(tot_length * sizeof(*output));
+	if (output == NULL)
+	{
+		return (NULL);
+	}
 	for (x = 0; x < s1_len; x++)
 	{
 		output[x] = s1[x];
@@ -42,10 +46,5 @@ char *str_concat(char *s1, char *s2)
 		output[x] = s2[y];
 	}
 	output[tot_length] = s2[y];
-	if (output == NULL)
-	{
-		free(output);
-		return (NULL);
-	}
 	return (output);
 }
