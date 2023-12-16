@@ -38,12 +38,6 @@ int **alloc_grid(int width, int height)
 		{
 			ptr1[i][j] = 0;
 		}
-		if (ptr1[i] == NULL)
-		{
-			return (NULL);
-		}
-
 	}
-
 	return (ptr1);
 }
