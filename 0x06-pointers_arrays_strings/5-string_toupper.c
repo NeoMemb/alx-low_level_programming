@@ -1,20 +1,21 @@
 #include "main.h"
 
 /**
- * string_toupper - Function that reverse the content of an array of int
- * @a: Type int
- * Return: string a
- */
-char *string_toupper(char *a)
-{
-	int h;
+* string_toupper - a function that changes all lowercase letters
+* of a string to uppercase
+* @str: string to manipulate
+* Return: string with all letters capitalized
+*/
 
-	for (h = 0; a[h] != '\0'; h++)
-	{
-		if (a[h] > 96 && a[h] < 123)
-		{
-			a[h] -= 32;
-		}
-	}
-	return (a);
+char *string_toupper(char *str)
+{
+
+int count;
+
+for (count = 0; str[count] != '\0'; count++)
+{
+	if (str[count] >= 'a' && str[count] <= 'z')
+	str[count] = str[count] - 'a' + 'A';
+}
+return (str);
 }

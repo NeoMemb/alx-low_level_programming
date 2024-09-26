@@ -1,22 +1,24 @@
 #include "lists.h"
+
 /**
- * add_nodeint - add int to the beginning of node
- * @head: double pointer to the end of ptr
- * @n: the ibt to be stored in the address
- * Return: the address
- */
+* add_nodeint - Prints all the elements of a list_t list.
+* @head: A pointer to the listint_t list.
+* @n: The data to add to the list
+*
+* Return: The new node or null on failure
+*/
+
 listint_t *add_nodeint(listint_t **head, const int n)
 {
-	listint_t *ptr;
+listint_t *new_node = (listint_t *)malloc(sizeof(listint_t));
 
-	ptr = malloc(sizeof(listint_t));
-	if (ptr == NULL)
-	{
-		return (NULL);
-	}
-	ptr->n = n;
-	ptr->next = *head;
-	*head = ptr;
+if (new_node == NULL)
+	return (NULL);
 
-	return (ptr);
+new_node->n = n;
+new_node->next = *head;
+*head = new_node;
+
+return (new_node);
 }
+

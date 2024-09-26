@@ -1,36 +1,36 @@
 #include "main.h"
+
 /**
- * divisible - helping function
- * @i: int type
- * @j: int type
- * Description: This function return 0 for
- * when i is 1 and return 1 if j * j > i
- * and then recursively continue the return only
- * by j + 1.
+ * prime_num_helper - recursive function to check if a number is prime
+ * @num: Number to check
+ * @numChecker: Number to check against
  *
- * Return: 1 if true
+ * Return: 1 if prime, 0 if otherwise
  */
-int divisible(int i, int j)
+
+int prime_num_helper(int num, int numChecker)
 {
-	if ((j * j == i) || (i < 0))
-	{
+	if (num % numChecker == 0 && numChecker != (num / 2))
 		return (0);
-	}
-	if (j * j > i)
-	{
+	else if (numChecker >= (num / 2))
 		return (1);
-	}
-	return (divisible(i, (j + 1)));
+	else
+		return (prime_num_helper(num, numChecker + 1));
 }
+
 /**
- * is_prime_number - checks for prime number
- * @n: int type
- * Description: This function uses the helping function
- * of divisible(i, j) but with arg (n, 0).
+ * is_prime_number - a recursive function
+ * that returns 1 if the input integer is a prime number, otherwise return 0.
+ * @n: param to check
  *
- * Return: int based on the helping function
+ * Return: 1 if prime, 0 if otherwise
  */
+
 int is_prime_number(int n)
 {
-	return (divisible(n, 0));
+	if (n > 1)
+		return (prime_num_helper(n, 2));
+	else if (n < 0)
+		return (0);
+	return (0);
 }

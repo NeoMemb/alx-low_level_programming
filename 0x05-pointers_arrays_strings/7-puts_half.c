@@ -1,30 +1,26 @@
 #include "main.h"
-#include <stdio.h>
+#include "2-strlen.c"
+
 /**
- * puts_half - print the second half of a str
- * @str: char type parameter
- * Return:0
+ * puts_half - function that prints half of a string
+ * The function should print the second half of the string
+ *
+ * @val: string to split
  */
-
-void puts_half(char *str)
+void puts_half(char *val)
 {
-	int a, b;
+	int counter;
+	int check = 0;
 
-	a = 0;
-	while (str[a])
+	if (_strlen(val) % 2 != 0)
 	{
-		a++;
+		check += 1;
 	}
-	a--;
-	b = a / 2;
-	a = 0;
-	while (str[a])
+
+	for (counter = (_strlen(val) + check) / 2; counter < _strlen(val); counter++)
 	{
-		if (a > b)
-		{
-			putchar(str[a]);
-		}
-		a++;
+		_putchar(val[counter]);
 	}
-	putchar('\n');
+
+	_putchar('\n');
 }

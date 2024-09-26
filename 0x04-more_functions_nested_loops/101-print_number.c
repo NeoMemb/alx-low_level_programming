@@ -1,26 +1,35 @@
 #include "main.h"
 
 /**
- * print_number - prints an integer
- * @n: integer to be printed
+ * print_number - function that prints an integer
+ * @num: number to be printed
  */
-void print_number(int n)
+
+void print_number(int num)
 {
-	unsigned int n1;
+	unsigned int tens, digit, positiveNumber = num;
+	double intChecker = 1;
 
-	if (n < 0)
+	if (num == 0)
+		_putchar('0');
+	else
 	{
-		n1 = -n;
-		_putchar('-');
-	} else
-	{
-		n1 = n;
+		if (num < 0)
+		{
+			positiveNumber = num * -1;
+			_putchar('-');
+		}
+
+		while (intChecker <= positiveNumber)
+			intChecker *= 10;
+		tens = intChecker / 10;
+
+		while (tens >= 1)
+		{
+			digit = positiveNumber / tens;
+			_putchar(digit + '0');
+			positiveNumber = (positiveNumber - (tens * digit));
+			tens /= 10;
+		}
 	}
-
-	if (n1 / 10)
-	{
-		print_number(n1 / 10);
-	}
-
-	_putchar((n1 % 10) + '0');
 }

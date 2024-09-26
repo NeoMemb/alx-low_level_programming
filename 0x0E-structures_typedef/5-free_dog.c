@@ -1,27 +1,18 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
+
 /**
- * free_dog - free mem allocated to d
- * @d: pointer to dog_t
- *
- * Return: 0
+ * free_dog - a function that frees dogs.
+ * @d: instance to be freed
  */
+
 void free_dog(dog_t *d)
 {
-	if (d == NULL)
+	if (d)
 	{
-		return;
+		free(d->name);
+		free(d->owner);
+		free(d);
 	}
-	while (d != NULL)
-	{
-		if (d->name != NULL)
-		{
-			free(d->name);
-		}
-		if (d->owner != NULL)
-		{
-			free(d->owner);
-		}
-	}
-	free(d);
 }

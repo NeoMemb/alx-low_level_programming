@@ -1,16 +1,15 @@
 #include <stdio.h>
+
 /**
- * main - printing number arg received
- * @argc: int data type
- * @argv: char data type
- * Description: Printing number of arg
- * in the command line after the first arg
+ * main - a program that prints the number of arguments passed into it
+ * @argc: Arg count
+ * @argv: Array of arg strings
  *
- * Return: Always 0 (Success)
+ * Return: 0 for successful exit
  */
-int main(int argc, char *argv[])
+
+int main(int argc, char *argv[] __attribute__((unused)))
 {
-	(void) argv;
 	printf("%d\n", argc - 1);
 	return (0);
 }

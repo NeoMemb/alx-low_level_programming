@@ -1,17 +1,15 @@
 #include <stdio.h>
-/**
- * main - Entry point
- * @argc: arg count
- * @argv: arg vector
- * Description: The function prints
- * the arg passed to the command line
- *
- * Return: Always (0) Success
- */
-int main(int argc, char **argv)
-{
-	(void) argc;
-	printf("%s\n", argv[0]);
 
+/**
+ * main - a program that prints its name
+ * @argc: Argument count
+ * @argv: Array of argument strings
+ *
+ * Return: 0 for succesful exit
+ */
+
+int main(int argc __attribute__((unused)), char *argv[])
+{
+	printf("%s\n", argv[0]);
 	return (0);
 }

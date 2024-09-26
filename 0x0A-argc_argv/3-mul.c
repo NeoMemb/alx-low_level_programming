@@ -1,33 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /**
- * main - multiply any two int
- * @argc: int data type
- * @argv: char data type
- * Description: after the first arg on the
- * comnand line, if there are two numbers
- * after it, it prints their multiplication
- * if there is no number, it prints Error
+ * main - a program that multiplies two numbers
+ * @argc: Number of arguments
+ * @argv: Array of arguments recieved
  *
- * Return: Always 0 (Success)
+ * Return: 0 on success, 1 if not given two arguments
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	if (argc != 3)
+	if (argc == 3)
+	{
+		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+		return (0);
+	}
+	else
 	{
 		printf("Error\n");
 		return (1);
 	}
-	else
-	{
-		int i;
-		int j;
-		int mul;
-
-		i = atoi(argv[1]);
-		j = atoi(argv[2]);
-		mul = i * j;
-		printf("%d\n", mul);
-	}
-	return (0);
 }

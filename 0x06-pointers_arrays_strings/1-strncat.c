@@ -1,16 +1,28 @@
 #include "main.h"
-#include <string.h>
+
 /**
- * _strncat - cat n number of src to dest
- * @dest: destination of cat str
- * @src: str to be cat from
- * @n: number of char to cat
- * cat means "catenate"
- * str means string
- *
- * Return: char
+ * _strncat - a function that concatenates two strings
+ * it will use at most n bytes from source
+ * @destination: string to be appended to
+ * @source: string to append
+ * @n: append n number of bytes(chars)
+ * Return: concatenated string
  */
-char *_strncat(char *dest, char *src, int n)
+
+char *_strncat(char *destination, char *source, int n)
 {
-	return (strncat(dest, src, n));
+	int destCount = 0, srcCount = 0;
+
+	while (destination[destCount] != '\0')
+		destCount++;
+
+	while (source[srcCount] != source[n])
+	{
+		destination[destCount] = source[srcCount];
+		destCount++;
+		srcCount++;
+	}
+	destination[destCount] = '\0';
+
+	return (destination);
 }

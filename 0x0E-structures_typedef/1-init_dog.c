@@ -1,23 +1,21 @@
+#include <stdio.h>
 #include "dog.h"
-#include <stdlib.h>
+
 /**
- * init_dog - details of dog
- * @d: dog that uses the data types structured in dog
- * @name: pointer to the name of dog
- * @age: float data type
- * @owner: pointer to the owner of dog
- * Description: name is tge name of the dog, age is the age
- * of the dog, owner is the name of it's owner
- *
- * Return: NULL, if d is empty
+ * init_dog - a function that initialize a variable of type struct dog
+ * @d: a variable of type struct dog
+ * @name: variable that holds the dogs name
+ * @age: variable that holds the dog age
+ * @owner: variable that holds the dog owner name
  */
+
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	if (d != NULL)
-	{
-		d->name = name;
-		d->age = age;
-		d->owner = owner;
 
-	}
+	if (d == NULL)
+		return;
+
+	d->name = name;
+	d->age = age;
+	d->owner = owner;
 }

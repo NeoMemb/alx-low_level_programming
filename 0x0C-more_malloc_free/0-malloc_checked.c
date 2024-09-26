@@ -1,21 +1,20 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
+
 /**
- * malloc_checked - allocating memory for a pointer
- * @b: int data type
- * Description: malloc unsigned integer and
- * exit pid with status98, if NULL.
+ * malloc_checked - a function that allocates memory using malloc
+ * @b: Size of memory to allocate
  *
- * Return: pointer
+ * Return: a pointer to the allocated memory
  */
+
 void *malloc_checked(unsigned int b)
 {
-	void *ptr;
+	void *reservedMemory;
 
-	ptr = malloc(b);
-	if (ptr == NULL)
-	{
+	reservedMemory = malloc(b);
+	if (reservedMemory == NULL)
 		exit(98);
-	}
-	return (ptr);
+
+	return (reservedMemory);
 }

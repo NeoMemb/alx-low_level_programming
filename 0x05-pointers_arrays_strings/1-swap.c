@@ -1,18 +1,14 @@
 #include "main.h"
-/**
- * swap_int - swap two integers
- * @a: First type int pointer address
- * @b: Second type int pointer address
- *
- * Return: nothing
- */
-void swap_int(int *a, int *b)
-{
-	int tmp;
-	int var;
 
-	tmp = *a;
-	var = *b;
-	*a = var;
-	*b = tmp;
+/**
+ * swap_int - function that swaps the values of two integers
+ *
+ * @num1: first integer
+ * @num2: second integer
+ */
+void swap_int(int *num1, int *num2)
+{
+	int num3 = *num2, num4 = *num1;
+	*num1 = num3;
+	*num2 = num4;
 }

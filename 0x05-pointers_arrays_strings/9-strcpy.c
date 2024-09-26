@@ -1,21 +1,21 @@
 #include "main.h"
-#include <stdio.h>
+#include "2-strlen.c"
 /**
- * *_strcpy - Copies the string pointed to by src.
- * @dest: Type char pointer
- * @src: Type char pointer
- * Return: Always 0.
+ * _strcpy - a function that copies the string pointed to by source
+ * including the terminating null byte (\0), to the buffer pointed to by dest
+ *
+ * @destination: destination to copy strings to
+ * @source: source is the string to copy
+ *
+ * Return: returns the pointer to dest
  */
-char *_strcpy(char *dest, char *src)
+char *_strcpy(char *destination, char *source)
 {
+	int counter;
 
-	int c;
-
-	for (c = 0; src[c] != '\0'; c++)
+	for (counter = 0; counter <= _strlen(source); counter++)
 	{
-		dest[c] = src[c];
+		destination[counter] = source[counter];
 	}
-	dest[c] = '\0';
-
-	return (dest);
+	return (destination);
 }

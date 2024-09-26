@@ -1,35 +1,36 @@
 #include "main.h"
+
 /**
- * sqrt_recursion - helper fuction
- * @i: int data type
- * @j: int data type
- * Description: This helper function takes in two
- * arguement. If i * i = j, return j. if i * i
- * > j, returns -1.
+ * sqrt_helper - Function to Find the square root
+ * @num: Number to find square root of
+ * @checkNum: The number checked to see if it's the sqrt of num
  *
- * Return: int i
+ * Return: The square root value
  */
-int sqrt_recursion(int i, int j)
+int sqrt_helper(int num, int checkNum)
 {
-	if (i * i == j)
-	{
-		return (i);
-	}
-	else if (i * i > j)
-	{
+	if (checkNum * checkNum == num)
+		return (checkNum);
+	else if (checkNum >= num / 2)
 		return (-1);
-	}
-	return (sqrt_recursion(i + 1, j));
+	return (sqrt_helper(num, checkNum + 1));
 }
+
 /**
- * _sqrt_recursion - returns square root
- * @n: data ype int
- * Description: This function uses an helper function
- * as it's return value.
+ * _sqrt_recursion - a recursive function
+ * that returns the natural square root of a number.
+ * @n: Number given to find root of
  *
- * Return: the square root
+ * Return: The square root or -1 if there is no natural square root
  */
+
 int _sqrt_recursion(int n)
 {
-	return (sqrt_recursion(1, n));
+	if (n == 1)
+		return (1);
+	else if (n < 0)
+		return (-1);
+	else if (n == 0)
+		return (0);
+	return (sqrt_helper(n, 1));
 }

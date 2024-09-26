@@ -1,19 +1,21 @@
 #include <stdio.h>
+
 /**
-  * main - Entry point
-  * Description: printing all lowercase alphabets using putchar.
-  *
-  * Return: Always 0 (Success)
-  */
+ * main - entry point
+ *
+ * A program that prints lowercase alphabets in reverse order
+ *
+ * Return: returns 0 (for success)
+ */
 
 int main(void)
 {
-	char z;
-	char a = 'a';
+	char alphabet = 'z';
 
-	for (z = 'z'; z >= a; z--)
+	while (alphabet >= 'a')
 	{
-		putchar(z);
+		putchar(alphabet);
+		alphabet--;
 	}
 	putchar('\n');
 

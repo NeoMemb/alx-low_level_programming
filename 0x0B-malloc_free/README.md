@@ -1,2 +1,1 @@
-0x0B-malloc_free project
-using malloc and free to modify strings and many more
+Dynamic memory allocation and deallocation in C (Malloc and Free)

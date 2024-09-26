@@ -1,18 +1,21 @@
 #include "main.h"
+
 /**
- * print_sign - Printing sign
- * @n: The ineger to be checked
+ * print_sign - A program that print sign of number
  *
- * Return: void
+ * @num: number is the paramter to check
+ *
+ * Return: return 1 if num >  0, 0 if num == 0, -1 if num < 0
  */
-int print_sign(int n)
+
+int print_sign(int num)
 {
-	if (n > 0)
+	if (num > 0)
 	{
 		_putchar('+');
 		return (1);
 	}
-	else if (n == 0)
+	else if (num == 0)
 	{
 		_putchar('0');
 		return (0);
@@ -23,4 +26,3 @@ int print_sign(int n)
 		return (-1);
 	}
 }
-

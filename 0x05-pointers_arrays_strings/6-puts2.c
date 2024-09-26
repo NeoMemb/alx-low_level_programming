@@ -1,25 +1,21 @@
 #include "main.h"
-#include <stdio.h>
+#include "2-strlen.c"
 /**
- * puts2 - Return characters in evenly
- * @str: data type char
+ * puts2 - function that prints every other character of a string
+ * starting with the first character
  *
- * Return: void
+ * @val: val is the string to print
  */
-void puts2(char *str)
+void puts2(char *val)
 {
-	int i;
+	int counter;
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (counter = 0; counter < _strlen(val); counter++)
 	{
-		if ((i % 2) == 0)
+		if (counter % 2 == 0)
 		{
-			putchar(str[i]);
-		}
-		else
-		{
-			continue;
+			_putchar(val[counter]);
 		}
 	}
-	putchar('\n');
+	_putchar('\n');
 }

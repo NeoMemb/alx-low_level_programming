@@ -1,9 +1,12 @@
 #include "main.h"
+
 /**
  * main - Entry point
- * Description: Using the _putchar function built
- * in the "main.h" file
- * Return: Always 0 (Success)
+ *
+ * Progarma to print _putchar to the screen
+ *
+ * Return: returns 0
+ *
  */
 int main(void)
 {

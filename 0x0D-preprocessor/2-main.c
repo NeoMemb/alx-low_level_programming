@@ -1,10 +1,11 @@
 #include <stdio.h>
 
 /**
- * main - prints name of this file
+ * main - a program that prints the name of the file it was compiled from
  *
- * Return: Always 1 (Success)
+ * Return: 0 on success
  */
+
 int main(void)
 {
 	printf("%s\n", __FILE__);

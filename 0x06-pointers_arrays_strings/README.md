@@ -1,1 +1,1 @@
-More on pointer and array
+More learning on pointers, arrays and string manipulations

@@ -1,43 +1,55 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
+
 /**
- * alloc_grid - is a double pointer funct
- * @width: int type
- * @height: int type
- * Description: width arg is size of the array
- * in 2D and height is the individual array
- * in the 2D array.
+ * alloc_grid - a function that returns a pointer to a
+ * 2 dimensional array of integers.
+ * @width: Width of grid, aka # of columns
+ * @height: Height of grid, aka # of rows
  *
- * Return: int double pointer
+ * Return: Pointer to 2D array, NULL if it fails
  */
+
 int **alloc_grid(int width, int height)
 {
-	int **ptr1, i, j;
+	int **mallocGrid, count1, count2;
 
-	if (width <= 0)
+	count1 = 0;
+	if (width <= 0 || height <= 0)
+		return (NULL);
+
+	mallocGrid = malloc(height * sizeof(*mallocGrid));
+	if (mallocGrid == NULL)
 	{
+		free(mallocGrid);
 		return (NULL);
 	}
-	if (height <= 0)
+
+	while (count1 < height)
 	{
-		return (NULL);
-	}
-	ptr1 = (int **)malloc(sizeof(int *) * height);
-	if (ptr1 == NULL)
-	{
-		return (NULL);
-	}
-	for (i = 0; i < height; i++)
-	{
-		ptr1[i] = (int *)malloc(sizeof(int *) * width);
-		if (ptr1[i] == NULL)
+		mallocGrid[count1] = malloc(width * sizeof(**mallocGrid));
+		if (mallocGrid[count1] == NULL)
 		{
+			count1--;
+			while (count1 >= 0)
+			{
+				free(mallocGrid[count1]);
+				count1--;
+			}
+			free(mallocGrid);
 			return (NULL);
 		}
-		for (j = 0; j < i; j++)
+
+		count2 = 0;
+		while (count2 < width)
 		{
-			ptr1[i][j] = 0;
+			mallocGrid[count1][count2] = 0;
+			count2++;
 		}
+
+		count1++;
 	}
-	return (ptr1);
+
+	count1 = 0;
+	return (mallocGrid);
 }

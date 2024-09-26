@@ -1,58 +1,84 @@
-#include "dog.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include "dog.h"
+
 /**
- * new_dog - creating a new dog
- * @name: pointer to char data type
- * @age: float data type
- * @owner: pointer to char data type
- * Description: This function creates the name of a dog profile,
- * with name as dog's name, age as dog's age, owner as the name of the owner.
+ * _strlen - function that returns the length of a string
  *
- * Return: dog_t
+ * @val: character to getstring
+ * Return: returns length of val
  */
+
+int _strlen(char *val)
+{
+	int i = 0;
+
+	while (val[i] != '\0')
+	{
+		i++;
+	}
+
+	return (i);
+}
+
+/**
+ * _strcpy - a function that copies the string pointed to by source
+ * including the terminating null byte (\0), to the buffer pointed to by dest
+ *
+ * @destination: destination to copy strings to
+ * @source: source is the string to copy
+ *
+ * Return: returns the pointer to dest
+ */
+
+char *_strcpy(char *destination, char *source)
+{
+	int counter;
+
+	for (counter = 0; counter <= _strlen(source); counter++)
+	{
+		destination[counter] = source[counter];
+	}
+
+	return (destination);
+}
+
+/**
+ * new_dog - a function that creates a new dog.
+ * @name: variable that holds the	dog name
+ * @age: variable that holds the dog age
+ * @owner: variable that holds the dog owner name
+ *
+ * Return: pointer to the new dog (Success),
+ * NULL if the function fails
+ */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	struct dog *smart;
-	char *dog_name, *dOwner;
-	int i, j, k;
+	dog_t *newDog;
+	int length1 = _strlen(name), length2 = _strlen(owner);
 
-	smart = malloc(sizeof(struct dog));
-	if (smart == NULL)
+	newDog = malloc(sizeof(dog_t));
+	if (newDog == NULL)
+		return (NULL);
+
+	newDog->name = malloc(sizeof(char) * (length1 + 1));
+	if (newDog->name == NULL)
 	{
+		free(newDog);
 		return (NULL);
 	}
-	for (i = 0; *(name + i) != '\0'; i++)
+	newDog->owner = malloc(sizeof(char) * (length2 + 1));
+
+	if (newDog->owner == NULL)
 	{
-	}
-	for (j = 0; *(name + j) != '\0'; j++)
-	{
-	}
-	dog_name = malloc(sizeof(char) * i + 1);
-	if (dog_name == NULL)
-	{
-		free(smart);
+		free(newDog);
+		free(newDog->name);
 		return (NULL);
 	}
-	dOwner = malloc(sizeof(char) * j + 1);
-	if (dOwner == NULL)
-	{
-		free(dog_name);
-		free(smart);
-		return (NULL);
-	}
-	for (k = 0; k <= i; k++)
-	{
-		*(dog_name + k) = *(name + k);
 
-	}
-	for (k = 0; k <= j; k++)
-	{
-		*(dOwner + k) = *(owner + k);
-	}
-	smart->name = name;
-	smart->age = age;
-	smart->owner = owner;
+	_strcpy(newDog->name, name);
+	_strcpy(newDog->owner, owner);
+	newDog->age = age;
 
-	return (smart);
+	return (newDog);
 }

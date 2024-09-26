@@ -1,37 +1,40 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <string.h>
+
 /**
- * _strdup - prints the string
- * @str: char data type
- * Description: The str argument is printed.
- * If the string parameter is Null (empty),
- * it returns NULL
+ * _strdup - a function that returns a pointer to a newly allocated space
+ * in memory, which contains a copy of the string given as a parameter
+ * @str: String to duplicate
  *
- * Return: the string to-be printed
+ * Return: Returns NULL if str = NULL
  */
+
 char *_strdup(char *str)
 {
-	unsigned int i, j;
-	char *s1;
+	char *mallocStr;
+	unsigned int count, length;
 
 	if (str == NULL)
-	{
 		return (NULL);
-	}
-	for (i = 0; str[i] != '\0'; i++)
-	{
-	}
-	s1 = malloc(sizeof(*s1) * i + 1);
-	if (s1 == NULL)
-	{
-		return (NULL);
-	}
-	for (j = 0; j < i; j++)
-	{
-		s1[j] = str[j];
-	}
-	s1[j] = '\0';
 
-	return (s1);
+	count = length = 0;
+
+	while (str[length] != '\0')
+	{
+		length++;
+	}
+
+	length++;
+	mallocStr = malloc(length * sizeof(*str));
+
+	if (mallocStr == NULL)
+		return (NULL);
+
+	while (count <= length)
+	{
+		mallocStr[count] = str[count];
+		count++;
+	}
+
+	return (mallocStr);
 }

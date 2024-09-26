@@ -1,25 +1,24 @@
 #include "main.h"
 
 /**
-* flip_bits - This returns the number of bits you would
-* need to flip.
-* @n: the number to flip from of unsigned int data type
-* @m: the number to flip to of unsigned int data type
+* flip_bits - Function that returns the number of bits you would
+* need to flip to get from one number to another.
+* @n: the number to flip from
+* @m: the number to flip to
 *
-* Return: 1 if it worked, or -1 if fail
+* Return: 1 if it worked, or -1 if an error occurred
 */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long int caret;
-	unsigned int count;
+unsigned long int xor = n ^ m;
+unsigned int count = 0;
 
-	caret = n ^ m;
-	count = 0;
-	while (caret)
-	{
-		count += caret & 1;
-		caret >>= 1;
-	}
-
-	return (count);
+while (xor)
+{
+	count += xor & 1;
+	xor >>= 1;
 }
+
+return (count);
+}
+

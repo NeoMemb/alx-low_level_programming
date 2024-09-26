@@ -1,1 +1,1 @@
-if else while in c
+Writing variables, if else statements and loops

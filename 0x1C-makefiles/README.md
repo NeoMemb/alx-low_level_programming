@@ -1,85 +1,57 @@
 # C - Makefiles
 
-In this project, I practiced writing Makefiles.
+### What are make and Makefiles?
 
-## Tests :heavy_check_mark:
+- `make` is a utility in Unix-like operating systems that automates the building and compilation of executable programs and libraries from source code files.
+- A `Makefile` is a special file that contains rules and instructions for make to follow when building a project. It specifies how the source code files are compiled and linked to generate the final executable or libraries.
 
-* [tests](./tests): Folder of test files.
+### When, why, and how to use Makefiles?
 
-## Helper Files :raised_hands:
+- Makefiles are used when you have a project consisting of multiple source code files that need to be compiled and linked together.
+- They are particularly useful for managing large software projects where recompiling only the modified files can save time and resources.
+- Makefiles allow developers to define dependencies and rules for building the project, making the build process more efficient and reproducible.
 
-* [school.c](./school.c): C function that displays a seahorse in text.
-Used for Makefile practice purposes throughout project.
+### What are rules and how to set and use them?
 
-* [main.c](./main.c): Main C function that runs the function defined in
-[school.c](./school.c).
+Rules in a Makefile specify how to build target files from source files.
+Each rule consists of a target, dependencies, and commands.
+The target is the file that needs to be built, dependencies are the files that the target depends on, and commands are the shell commands to execute to build the target.
+Example rule syntax:
 
-## Header File :file_folder:
+```
+target: dependencies
+    commands
+```
 
-* [m.h](./m.h): Header file defining the function prototype used in `school.c`.
+### What are explicit and implicit rules?
 
-## Tasks :page_with_curl:
+- Explicit rules are rules explicitly defined in the Makefile with specific targets and dependencies.
+- Implicit rules are predefined rules in make that are used when no explicit rule matches the target file.
+- Implicit rules are based on file extensions (e.g., .c files are compiled into object files .o) and are automatically applied by make without needing to be specified in the Makefile.
 
-* **0. make -f 0-Makefile**
-  * [0-Makefile](./0-Makefile): Makefile that creates an executable `school` based on
-  [school.c](./school.c) and [main.c](./main.c). Includes:
-    * Rule `all` that builds the executable.
+### What are the most common/useful rules?
 
-* **1. make -f 1-Makefile**
-  * [1-Makefile](./1-Makefile): Makefile that creates an executable `school` based on
-  [school.c](./school.c) and [main.c](./main.c). Builds on [0-Makefile](./0-Makefile)
-  with:
-    * Variable `CC` that defines the compiler to be used.
-    * Variable `SRC` that defines the `.c` files to compile.
-    * The `all` rule only recompiles updated source files.
+Some common rules in Makefiles include:
+- all: Builds the entire project.
+- clean: Removes all generated files (object files, executables).
+- install: Installs the built executable or libraries into the system directories.
+- uninstall: Uninstalls the previously installed files.
+- test: Runs automated tests on the built executable.
 
-* **2. make -f 2-Makefile**
-  * [2-Makefile](./2-Makefile): Makefile that creates an executable `school` based on
-  [school.c](./school.c) and [main.c](./main.c). Builds on [1-Makefile](./1-Makefile)
-  with:
-    * Variable `OBJ` that defines the `.o` files to compile.
-    * Variable `NAME` that defines the name of the executable.
+### What are variables and how to set and use them?
 
-* **3. make -f 3-Makefile**
-  * [3-Makefile](./3-Makefile): Makefile that creates an executable `school` based on
-  [school.c](./school.c) and [main.c](./main.c). Builds on [2-Makefile](./2-Makefile)
-  with:
-    * Rule `clean` that deletes all Emacs/Vim temporary files as well as the
-    executable.
-    * Rule `oclean` that deletes the object files.
-    * Rule `fclean` that deltes all of the temporary files, executable, and
-    object files.
-    * Rule `re` that forces recompilation of all source files.
-    * Variable `RM` that defines the command to delete files.
+- Variables in Makefiles are used to store values that can be reused throughout the file.
+- They are defined using the syntax `VARIABLE_NAME = value`.
+- Variables can be referenced using `$(VARIABLE_NAME) syntax`.
+Example:
 
-* **4. A complete Makefile**
-  * [4-Makefile](./4-Makefile): Makefile that creates an executable `school` based on
-  [school.c](./school.c) and [main.c](./main.c). Builds on [3-Makefile](./3-Makefile)
-  with:
-    * Variable `CFLAGS` that defines the compiler flags `-Wall -Werror -Wextra
-    -pedantic`.
+```
+CC = gcc
+CFLAGS = -Wall -Wextra
+SOURCES = main.c file1.c file2.c
 
-* **5. Island Perimeter**
-  * [5-island_perimeter.py](./5-island_perimeter.py): Python function that returns the
-  perimeter of an island defined in a grid.
-  * Prototype: `def island_perimeter(grid):`
-  * The parameter `grid` is a list of a list of integers.
-    * Water is represented by `0`.
-    * Land is represented by `1`.
-    * Each element of the lists represents a cell square of side length 1.
-    * Grid cells are connected horizontally/verticaly (not diagonally).
-    * The grid is rectangular, with a width and height not exceeding 100.
-    * The grid is completely surrounded by water, and there is either exactly
-    one island or nothing.
-    * The island does not contain lakes (water inside disconnected from
-    surrounding land).
+program: $(SOURCES)
+    $(CC) $(CFLAGS) $(SOURCES) -o program
+```
 
-* **6. make -f 100-Makefile**
-  * [100-Makefile](./100-Makefile): Makefile that creates an executable `school` based on
-  [school.c](./school.c) and [main.c](./main.c). Builds on [4-Makefile](./4-Makefile)
-  with:
-    * Does not define the variable `RM`.
-    * Never uses the string `$(CFLAGS)`.
-    * Does not compile if the header `m.h` is missing.
-    * Works even if there are existing files of the same name as any of the
-    Makefile rules in the current directory.
+In this example, CC, CFLAGS, and SOURCES are variables storing the compiler, compiler flags, and source files respectively.

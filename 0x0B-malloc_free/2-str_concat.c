@@ -1,50 +1,55 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <string.h>
-/**
- * str_concat - concatenates two string
- * @s1: char type
- * @s2: char type
- * Description: s1 and s2 are to be concatenated
- * together, and the concatenated string is returned.
- * The returned pointer should point to a newly allocated space in memory
- * which contains the contents of s1, followed by
- * the contents of s2, and null terminated
- * Return: char (concatenated string)
- */
-char *str_concat(char *s1, char *s2)
-{
-	unsigned int s1_len, s2_len, tot_length, x, y;
-	char *output;
+#include <stdio.h>
 
-	if (s1 == NULL)
+/**
+ * str_concat - a function that concatenates two strings.
+ * @str1: First string
+ * @str2: Second string
+ *
+ * Return: Pointer to new space in memory, return NULL if it fails
+ */
+
+char *str_concat(char *str1, char *str2)
+{
+	char *mallocStr, *emptyStr;
+	int count1, count2, length1, length2;
+
+	emptyStr = "";
+
+	if (str1 == NULL)
+		str1 = emptyStr;
+	if (str2 == NULL)
+		str2 = emptyStr;
+	count1 = length1 = length2 = 0;
+
+	while (str1[length1] != '\0')
 	{
-		s1 = "";
+		length1++;
 	}
-	if (s2 == NULL)
+	while (str2[length2] != '\0')
 	{
-		s2 = "";
+		length2++;
 	}
-	for (s1_len = 0; s1[s1_len] != '\0'; s1_len++)
-	{
-	}
-	for (s2_len = 0; s2[s2_len] != '\0'; s2_len++)
-	{
-	}
-	tot_length = s1_len + s2_len + 1;
-	output = malloc(tot_length * sizeof(*output));
-	if (output == NULL)
-	{
+	length2++;
+	mallocStr = malloc((length1 + length2) * sizeof(*str1));
+
+	if (mallocStr == NULL)
 		return (NULL);
-	}
-	for (x = 0; x < s1_len; x++)
+	count1 = 0;
+
+	while (count1 < length1)
 	{
-		output[x] = s1[x];
+		mallocStr[count1] = str1[count1];
+		count1++;
 	}
-	for (y = 0; y < s2_len; y++, x++)
+	count2 = 0;
+	while (count2 <= length2)
 	{
-		output[x] = s2[y];
+		mallocStr[count1] = str2[count2];
+		count1++;
+		count2++;
 	}
-	output[tot_length] = s2[y];
-	return (output);
+
+	return (mallocStr);
 }

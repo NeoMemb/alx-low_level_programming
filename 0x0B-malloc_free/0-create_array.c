@@ -1,35 +1,32 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
+
 /**
- * create_array - creating array
- * @size: unsigned int type data
- * @c: char type data
- * Description: size is the number of byte in the
- * memory we locate for the array to-be created and
- * c is the char to pass to the array.
+ * create_array - a function that creates an array of chars,
+ * and initializes it with a specific char.
+ * @size: Size of the array
+ * @c: Char to initialize with
  *
- * Return: char
+ * Return: a pointer to the array, or NULL if it fails
  */
 
 char *create_array(unsigned int size, char c)
 {
-	char *str;
-	unsigned int i;
+	char *mallocArray;
+	unsigned int count = 0;
 
-	str = (void *)malloc(size * sizeof(char));
-	if (size == 0)
-	{
+	if (size != 0)
+		mallocArray = malloc(size * sizeof(c));
+	else
 		return (NULL);
-	}
-	if (str == NULL)
-	{
+	if (mallocArray == NULL)
 		return (NULL);
-	}
-	for (i = 0; i < size; i++)
+
+	while (count < size)
 	{
-		str[i] = c;
+		mallocArray[count] = c;
+		count++;
 	}
 
-	return (str);
-
+	return (mallocArray);
 }

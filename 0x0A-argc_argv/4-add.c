@@ -1,35 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+
 /**
- * main - add any two int
- * @argc: int data type
- * @argv: char data type
- * Description: after the first arg on the
- * comnand line, if there are two numbers
- * after it, it prints their addition
- * if there is no number, it prints Error
+ * main - a program that adds positive numbers
+ * @argc: Number of arguments
+ * @argv: Arguments recieved
  *
- * Return: Always 0 (Success)
+ * Return: 0 on success, 1 if theres a nondigit arg
  */
+
 int main(int argc, char *argv[])
 {
-	int i, sum, digit, j;
+	int sum = 0, count = 1, i;
 
-	sum = 0;
-	for (i = 1; i < argc; i++)
+	if (argc == 1)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		printf("0\n");
+		return (0);
+	}
+
+	while (count < argc)
+	{
+		for (i = 0; argv[count][i] != '\0'; i++)
 		{
-			if (!isdigit(argv[i][j]) && argv[i][j] != '-')
+			if (!(isdigit(argv[count][i])))
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		digit = atoi(argv[i]);
-		sum += digit;
+		sum += atoi(argv[count]);
+		count++;
 	}
+
 	printf("%d\n", sum);
 	return (0);
 }

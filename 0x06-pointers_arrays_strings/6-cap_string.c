@@ -1,31 +1,30 @@
 #include "main.h"
 
 /**
- * cap_string - capitalizes all words in a string
- * @s: string
- * Return: address of s
+ * cap_string - a function that capitalizes all words of a string
+ * @str: string to manipulate
+ * Return: capitalized string
  */
-char *cap_string(char *s)
-{
-	int x = 0, y;
-	char a[] = " \t\n,;.!?\"(){}";
 
-	while (*(s + x))
+char *cap_string(char *str)
+{
+	int i = 0;
+
+	if (str[i] >= 'a' && str[i] <= 'z')
+		str[i] = str[i] - 'a' + 'A';
+	i++;
+
+	while (str[i] != '\0')
 	{
-		if (*(s + x) >= 'a' && *(s + x) <= 'z')
-		{
-			if (x == 0)
-				*(s + x) -= 'a' - 'A';
-			else
-			{
-				for (y = 0; y <= 12; y++)
-				{
-					if (a[y] == *(s + x - 1))
-						*(s + x) -= 'a' - 'A';
-				}
-			}
-		}
-		x++;
+		if ((str[i] >= 'a' && str[i] <= 'z')
+		    && (str[i - 1] == ',' || str[i - 1] == ';' || str[i - 1] == '.' ||
+			str[i - 1] == '!' || str[i - 1] == '?' || str[i - 1] == '"' ||
+			str[i - 1] == '(' || str[i - 1] == ')' || str[i - 1] == '{' ||
+			str[i - 1] == '}' || str[i - 1] == ' ' || str[i - 1] == '\t'
+			|| str[i - 1] == '\n'))
+			str[i] = str[i] - 'a' + 'A';
+		i++;
 	}
-	return (s);
+
+	return (str);
 }

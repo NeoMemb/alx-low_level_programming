@@ -1,29 +1,28 @@
 #include "lists.h"
+
 /**
- * get_nodeint_at_index - get the index of node
- * @head: The beginning of the node
- * @index: the index of the node
- * Return: the value of node, which the index is checked
- */
+* get_nodeint_at_index - Function that deletes the head node and
+* return the remianing nodes of the list
+* @head: A pointer to the listint_t list head.
+* @index: The index of the node to return
+*
+* Return: The index of the node or null
+*/
+
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-	listint_t *ptr;
-	unsigned int tar_ind;
+listint_t *current_node = head;
+unsigned int count = 0;
 
-	tar_ind = 0;
-	if (head == NULL)
-	{
-		return (NULL);
-	}
-	ptr = head;
-	while (ptr != NULL)
-	{
-		if (tar_ind == index)
-		{
-			return (ptr);
-		}
-		tar_ind++;
-		ptr = ptr->next;
-	}
-	return (NULL);
+while (current_node != NULL)
+{
+	if (count == index)
+	return (current_node);
+
+	count++;
+	current_node = current_node->next;
 }
+
+return (NULL);
+}
+

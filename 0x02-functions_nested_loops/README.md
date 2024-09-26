@@ -1,1 +1,1 @@
-Project 0x02-functions nested loops
+Funtions and Nested Loops in C programming language
